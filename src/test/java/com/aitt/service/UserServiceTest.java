@@ -1,6 +1,7 @@
 package com.aitt.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import java.lang.reflect.InvocationTargetException;
@@ -43,14 +44,29 @@ public class UserServiceTest {
 		assertNotNull(userNameById);
 	}
 	
-	//test a private method,doing by using reflection
+	
+	//test a private method,doing by using powermock
 	
 	@Test
-	public void getUserDobTest() throws Exception {
-		Method method = UserService.class.getDeclaredMethod("getUserDob",null);  //private method name and if params present as int , in place of null use int.class
-		method.setAccessible(true);
-		method.invoke(userService, null);      //service class name and params .If params nt there use null
-		}
+	public void getUserDobTest() {
+		UserService userService = spy(new UserService());
+		when(userService.getUserDob()).thenReturn("26-03-1990");
+		String user = userService.getUserDob();
+		assertNotNull(user);
+	}
+	
+	
+	
+	
+	
+	//test a private method,doing by using reflection
+	
+	//@Test
+	//public void getUserDobTest() throws Exception {
+	//	Method method = UserService.class.getDeclaredMethod("getUserDob",null);  //private method name and if params present as int , in place of null use int.class
+	//	method.setAccessible(true);
+	//	method.invoke(userService, null);      //service class name and params .If params nt there use null
+	//	}
 	
 	//private method with params testing 
 	

@@ -16,10 +16,18 @@ public class UserService {
 		return name;
 	}
 	
-	//how to test private method
+//how to test private method using reflection
 	
-	private String getUserDob() {
-	String dob="26-03-1990";
-	return dob;	
-	}
+//	private String getUserDob() {
+//	String dob="26-03-1990";
+//	return dob;	
+//	}
+	
+	
+	//how to test private method using powermock
+	
+	 String getUserDob() {
+		String dob="26-03-1990";
+		return dob;	
+		}
 }
